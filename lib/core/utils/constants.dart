@@ -1,0 +1,1 @@
+ List<String>subjects=['news','weather','health','quiz'];

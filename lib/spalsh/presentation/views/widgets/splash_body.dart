@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:vita/main.dart';
+import 'package:vita/home/presentation/views/home_view.dart';
 import 'package:vita/spalsh/presentation/views/widgets/sliding_text.dart';
 
 import '../../../../core/utils/images_data.dart';
@@ -28,7 +27,7 @@ class _SplashBodyState extends State<SplashBody>
   void navigateToHome() {
     Future.delayed(const Duration(seconds: 2), () {
       Get.off(
-        () => const MyHomePage(title: 'test'),
+        () => const HomeView(),
         transition: Transition.fade,
         duration: const Duration(milliseconds: 750),
       );
