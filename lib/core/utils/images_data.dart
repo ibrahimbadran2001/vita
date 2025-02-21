@@ -4,6 +4,6 @@ class ImagesData{
   static String news= 'assets/images/news.jpg';
   static String quiz= 'assets/images/quiz.jpg';
   static String health= 'assets/images/health.jpg';
-
   static List<String>images=[news,weather,health,quiz];
+  static String easy='assets/images/easy.png';
 }
