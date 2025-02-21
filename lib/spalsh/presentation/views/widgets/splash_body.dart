@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:vita/core/utils/constants.dart';
 import 'package:vita/home/presentation/views/home_view.dart';
 import 'package:vita/spalsh/presentation/views/widgets/sliding_text.dart';
 
@@ -26,11 +26,7 @@ class _SplashBodyState extends State<SplashBody>
 
   void navigateToHome() {
     Future.delayed(const Duration(seconds: 2), () {
-      Get.off(
-        () => const HomeView(),
-        transition: Transition.fade,
-        duration: const Duration(milliseconds: 750),
-      );
+      navigateTo(context,const HomeView());
     });
   }
 
@@ -63,7 +59,7 @@ class _SplashBodyState extends State<SplashBody>
   void initSlidingAnimation() {
     animationController =
         AnimationController(vsync: this, duration: const Duration(seconds: 1));
-    slidingAnimation = Tween<Offset>(begin: Offset(0, 10), end: Offset.zero)
+    slidingAnimation = Tween<Offset>(begin: const Offset(0, 10), end: Offset.zero)
         .animate(animationController);
     animationController.forward();
   }

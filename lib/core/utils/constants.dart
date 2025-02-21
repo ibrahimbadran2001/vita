@@ -1,19 +1,39 @@
  import 'package:flutter/material.dart';
+
 const myColor= Color(0xff4682B4);
+
 List<String>subjects=['news','weather','health','quiz'];
- void navigateAndFinish(context,widget) =>
+
+ void navigateAndFinish(context,widget){
      Navigator.pushAndRemoveUntil(
          context,
-         MaterialPageRoute(builder: (context)=>widget),
-             (route) => false);
-
- void navigateTo(BuildContext context,widget) =>
-     Navigator.push(
-       context,
-       MaterialPageRoute(
-           builder:(context)=>widget
-       ),
+         PageRouteBuilder(
+           transitionDuration: const Duration(milliseconds: 500),
+           pageBuilder: (context, animation, secondaryAnimation) => widget,
+           transitionsBuilder: (context, animation, secondaryAnimation, child) {
+             return FadeTransition(
+               opacity: animation,
+               child: child,
+             );
+           },
+         ), (route) => false
      );
+ }
+ void navigateTo(BuildContext context, Widget widget) {
+   Navigator.push(
+     context,
+     PageRouteBuilder(
+       transitionDuration: const Duration(milliseconds: 500),
+       pageBuilder: (context, animation, secondaryAnimation) => widget,
+       transitionsBuilder: (context, animation, secondaryAnimation, child) {
+         return FadeTransition(
+           opacity: animation,
+           child: child,
+         );
+       },
+     ),
+   );
+ }
  BoxDecoration myBoxShadow(BuildContext context) {
    return BoxDecoration(
      color: Theme.of(context).cardColor,

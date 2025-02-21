@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:vita/core/utils/constants.dart';
+import 'package:vita/home/presentation/views/home_view.dart';
 import 'package:vita/quiz/presentation/views/widgets/my_custom_button.dart';
-import 'package:vita/quiz/presentation/views/widgets/quiz_answers_list_view.dart';
+
 
 import 'quiz_card_widget.dart';
 
@@ -37,7 +38,9 @@ class _QuestionViewBodyState extends State<QuestionViewBody> {
           ),
           const SizedBox(height: 50,),
           MYCustomButton(
-              onPress: (){},
+              onPress: (){
+                navigateAndFinish(context, const HomeView());
+              },
               text: 'submit',
           )
         ],
