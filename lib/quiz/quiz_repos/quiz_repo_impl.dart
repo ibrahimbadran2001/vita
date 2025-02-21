@@ -6,34 +6,44 @@ import 'package:vita/quiz/models/category_model.dart';
 import 'package:vita/quiz/models/quiz_model.dart';
 import 'package:vita/quiz/quiz_repos/quiz_repo.dart';
 
-class QuizRepoImpl implements QuizRepo{
-   final ApiService apiService;
+class QuizRepoImpl implements QuizRepo {
+  final ApiService apiService;
 
   QuizRepoImpl({required this.apiService});
 
   @override
-  Future<Either<Failure, CategoriesModel>> fetchQuizCategories()async {
+  Future<Either<Failure, CategoriesModel>> fetchQuizCategories() async {
     try {
-      var data= await apiService.get(
+      var data = await apiService.get(
         baseUrl: ApiService.quizBaseUrl,
-        endPoint:'api_category.php',
+        endPoint: 'api_category.php',
       );
-      var categories=CategoriesModel.fromJson(data);
+      var categories = CategoriesModel.fromJson(data);
       return Right(categories);
     } catch (e) {
-      if (e is DioException){
+      if (e is DioException) {
         return Left(ServerFailure.fromDioException(e));
-      }else{
+      } else {
         return Left(ServerFailure(errMessage: e.toString(),));
       }
     }
   }
-  
+
   @override
-  Future<Either<Failure, QuizModel>> fetchFullQuiz() {
-    // TODO: implement fetchFullQuiz
-    throw UnimplementedError();
+  Future<Either<Failure, QuizModel>> fetchFullQuiz() async {
+    try {
+      var data = await apiService.get(
+        baseUrl: ApiService.quizBaseUrl,
+        endPoint: 'api_category.php',
+      );
+      var quiz = QuizModel.fromJson(data);
+      return Right(quiz);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServerFailure.fromDioException(e));
+      } else {
+        return Left(ServerFailure(errMessage: e.toString(),));
+      }
+    }
   }
-  
-  
 }
