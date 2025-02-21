@@ -9,24 +9,26 @@ class QuizView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue.shade100.withOpacity(0.5),
-        leading: Padding(
-          padding: const EdgeInsets.all(5.0),
-          child: Image.asset(
-            ImagesData.logo ,
-          ),
-        ),
-        title: Text(
-            'Vita Quiz',
-          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-            fontSize: 20,
-          ),
-        ),
-
-        centerTitle: true,
-      ),
+      appBar: buildQuizAppBar(context),
       body: const QuizViewBody(),
     );
   }
+}
+AppBar buildQuizAppBar(BuildContext context) {
+  return AppBar(
+    backgroundColor: Colors.blue.shade100.withOpacity(0.5),
+    leading: Padding(
+      padding: const EdgeInsets.all(5.0),
+      child: Image.asset(
+        ImagesData.logo ,
+      ),
+    ),
+    title: Text(
+      'Vita Quiz',
+      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+        fontSize: 20,
+      ),
+    ),
+    centerTitle: true,
+  );
 }
