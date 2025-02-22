@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:vita/core/utils/constants.dart';
-
-import '../../../../core/utils/images_data.dart';
+import 'package:vita/quiz/presentation/manager/quiz_categories_cubit.dart';
 
 class QuizLevelWidget extends StatelessWidget {
   const QuizLevelWidget({
-    super.key,
+    super.key, required this.index,
   });
-
+  final int index;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,13 +19,13 @@ class QuizLevelWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              ImagesData.easy,
+              QuizCategoriesCubit.get(context).levelsImages[index],
               width: 65,
               height: 65,
             ),
             const SizedBox(height: 10,),
             Text(
-                'Easy Level',
+                QuizCategoriesCubit.get(context).quizLevels[index],
                 style: Theme.of(context).textTheme.bodySmall
             ),
           ],

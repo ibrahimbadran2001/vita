@@ -12,7 +12,7 @@ class QuizLevelListView extends StatelessWidget {
       height: 125,
       child: ListView.separated(
           scrollDirection: Axis.horizontal,
-          itemBuilder: (context,index)=>const QuizLevelWidget(),
+          itemBuilder: (context,index)=>QuizLevelWidget(index: index,),
           separatorBuilder: (context,index)=>const SizedBox(width: 8,),
           itemCount: 4
       ),

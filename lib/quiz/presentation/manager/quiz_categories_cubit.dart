@@ -16,4 +16,11 @@ class QuizCategoriesCubit extends Cubit<QuizCategoriesStates> {
           emit(GetQuizCategoriesSuccess(model: model));
         });
   }
+  List<String> quizLevels = ['Random', 'Easy', 'Medium','Hard'];
+  List<String> levelsImages=[
+    'assets/images/random.png',
+    'assets/images/easy.png',
+    'assets/images/medium.png',
+    'assets/images/hard.png',
+  ];
 }
