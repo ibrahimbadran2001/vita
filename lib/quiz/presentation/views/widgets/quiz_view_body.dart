@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vita/core/utils/constants.dart';
+import 'package:vita/quiz/presentation/manager/quiz_categories_cubit.dart';
+import 'package:vita/quiz/presentation/manager/quiz_categories_states.dart';
 import 'package:vita/quiz/presentation/views/question_view.dart';
 import 'package:vita/quiz/presentation/views/widgets/my_custom_button.dart';
 import 'package:vita/quiz/presentation/views/widgets/quiz_categories_list_view.dart';
@@ -20,7 +23,17 @@ class QuizViewBody extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyLarge,
           ),
           const SizedBox(height: 10),
-          const QuizCategoriesListView(),
+          BlocBuilder<QuizCategoriesCubit,QuizCategoriesStates>(
+              builder: (context,state){
+                if(state is GetQuizCategoriesSuccess){
+                  return  QuizCategoriesListView(model: state.model,);
+                }else if(state is GetQuizCategoriesError){
+                  return Text(state.error.toString());
+                }else{
+                  return const Center(child: CircularProgressIndicator(color: myColor,));
+                }
+
+          }),
           const SizedBox(height: 20,),
            Text(
               'choose the level of quiz !',
