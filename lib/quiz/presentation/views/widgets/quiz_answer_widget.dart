@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-
 class QuizAnswer extends StatelessWidget {
   const QuizAnswer({
-    super.key,
+    super.key, required this.answer,
   });
-
+final String answer;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,7 +16,7 @@ class QuizAnswer extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Text(
-          'messi',
+          answer,
           overflow: TextOverflow.ellipsis,
           maxLines: 2,
           style: Theme.of(context).textTheme.bodyMedium,

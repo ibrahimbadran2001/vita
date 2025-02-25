@@ -14,13 +14,13 @@ final lightTheme = ThemeData.light().copyWith(
   shadowColor: Colors.grey.withOpacity(0.4),
   textButtonTheme:TextButtonThemeData(
     style: ButtonStyle(
-      overlayColor: MaterialStateProperty.all<Color>(const Color.fromRGBO(249, 136, 31, 200)),
+      overlayColor: MaterialStateProperty.all<Color>(const  Color(0xff4682B4).withOpacity(0.2)),
     )
   ),
   iconButtonTheme: IconButtonThemeData(
     style: ButtonStyle(
       iconColor: MaterialStateProperty.all<Color>(Colors.grey[700]!),
-      overlayColor: MaterialStateProperty.all<Color>(const Color.fromRGBO(249, 136, 31, 200)),
+      overlayColor: MaterialStateProperty.all<Color>(const Color(0xff4682B4).withOpacity(0.2)),
     ),
   ),
     // textSelectionTheme: TextSelectionThemeData(

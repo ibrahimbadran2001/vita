@@ -5,5 +5,5 @@ import '../models/quiz_model.dart';
 
 abstract class QuizRepo{
   Future<Either<Failure,CategoriesModel>> fetchQuizCategories();
-  Future<Either<Failure,QuizModel>> fetchFullQuiz();
+  Future<Either<Failure,QuizModel>> fetchFullQuiz({int ? category, String ? level});
 }

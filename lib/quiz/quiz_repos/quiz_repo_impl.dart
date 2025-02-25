@@ -30,11 +30,16 @@ class QuizRepoImpl implements QuizRepo {
   }
 
   @override
-  Future<Either<Failure, QuizModel>> fetchFullQuiz() async {
+  Future<Either<Failure, QuizModel>> fetchFullQuiz({int ? category , String ? level}) async {
     try {
       var data = await apiService.get(
         baseUrl: ApiService.quizBaseUrl,
-        endPoint: 'api_category.php',
+        endPoint:
+        category!=null && level!=null?
+        'api.php?amount=10&category=$category&difficulty=$level&type=multiple'
+        : category==null&&level==null?'api.php?amount=10&type=multiple'
+            :category==null&&level!=null?'api.php?amount=10&type=multiple&difficulty=$level'
+              :'api.php?amount=10&type=multiple&category=$category',
       );
       var quiz = QuizModel.fromJson(data);
       return Right(quiz);

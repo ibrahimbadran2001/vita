@@ -1,7 +1,7 @@
  import 'package:flutter/material.dart';
 
 const myColor= Color(0xff4682B4);
-
+Color selectedContainerColor =  Colors.blue.shade100.withOpacity(0.4);
 List<String>subjects=['news','weather','health','quiz'];
 
  void navigateAndFinish(context,widget){
@@ -34,19 +34,20 @@ List<String>subjects=['news','weather','health','quiz'];
      ),
    );
  }
- BoxDecoration myBoxShadow(BuildContext context) {
+ BoxDecoration myBoxShadow(BuildContext context,Color color,Border ? border) {
    return BoxDecoration(
-     color: Theme.of(context).cardColor,
+     color: color,
      boxShadow: [
        BoxShadow(
          color: Theme.of(context).shadowColor,
          //color: 3// Shadow color
          spreadRadius: 1, // Spread radius
          blurRadius: 3, // Blur radius
-         offset: Offset(0, 2), // Offset in x and y directions
+         offset: const Offset(0, 2), // Offset in x and y directions
        ),
      ],
      borderRadius: BorderRadius.circular(10),
+     border: border,
      //color: Colors.white,
    );
  }

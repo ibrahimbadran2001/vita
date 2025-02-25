@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vita/core/utils/service_locator.dart';
-import 'package:vita/quiz/presentation/manager/quiz_categories_cubit.dart';
+import 'package:vita/quiz/presentation/manager/quiz_categories/quiz_categories_cubit.dart';
+import 'package:vita/quiz/presentation/manager/quiz_levels_cubit/quiz_levels_cubit.dart';
 import 'package:vita/quiz/quiz_repos/quiz_repo_impl.dart';
 import 'package:vita/spalsh/presentation/views/splash_view.dart';
 import 'core/utils/observer.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
     return  MultiBlocProvider(
       providers: [
         BlocProvider(create: (context)=>QuizCategoriesCubit(getIt.get<QuizRepoImpl>())..fetchQuizCategories()),
+        BlocProvider(create: (context)=>QuizLevelsCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
